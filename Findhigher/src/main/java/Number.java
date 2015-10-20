@@ -25,8 +25,8 @@ public class Number
         public Number GetHighest()
         {
             String digit = _number.toString();
-            Iterable numbers = digit
-            numbers = numbers.OrderByDescending(n => n);
+            //Iterable numbers =
+            Collections.sort();
             String higherNumber = string.Join("", numbers);
             return new Number(higherNumber);
         }

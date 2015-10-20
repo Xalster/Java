@@ -22,20 +22,20 @@ public class CodeReader {
     private Integer lineCountInActiveMode = 0;
 
     public CodeReader(String Path) {
-        Load(Path);
-        AskAboutComments();
-        AskAboutBrackets();
-        AskAboutEmptyLines();
-        AskAboutOutput();
+        load(Path);
+        askAboutComments();
+        askAboutBrackets();
+        askAboutEmptyLines();
+        askAboutOutput();
         System.out.println();
 
-        ParseContent();
+        parseContent();
 
-        ShowLineCount();
+        showLineCount();
 
     }
 
-    public void Load(String Path) {
+    public void load(String Path) {
         try {
             content = Files.readAllLines(fileName, Charset.defaultCharset());
         } catch (IOException e) {
@@ -43,7 +43,7 @@ public class CodeReader {
         }
     }
 
-    public void AskAboutComments() {
+    public void askAboutComments() {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         System.out.println("Do yo want to count comment line? (y/n)");
@@ -68,7 +68,7 @@ public class CodeReader {
         }
     }
 
-    public void AskAboutBrackets() {
+    public void askAboutBrackets() {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("\nDo yo want to count Bracket only Lines? (y/n)");
         char x = 0;
@@ -91,7 +91,7 @@ public class CodeReader {
         }
     }
 
-    public void AskAboutEmptyLines() {
+    public void askAboutEmptyLines() {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("\nDo yo want to count empty Lines? (y/n)");
         char empty = 0;
@@ -114,7 +114,7 @@ public class CodeReader {
         }
     }
 
-    public void AskAboutOutput() {
+    public void askAboutOutput() {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("\nDo yo want to see Output lines? (y/n)");
         char output = 0;
@@ -138,30 +138,30 @@ public class CodeReader {
         }
     }
 
-    public void ParseContent() {
-        for (String line : content) ParseLine(line);
+    public void parseContent() {
+        content.forEach(this::parseLine);
     }
 
-    public void ParseLine(String line) {
+    public void parseLine(String line) {
         String parsed = line.trim();
-        if (ParseEmpty(parsed)) return;
-        if (ParseBrackets(parsed)) return;
-        if (ParseComment(parsed)) return;
+        if (parseEmpty(parsed)) return;
+        if (parseBrackets(parsed)) return;
+        if (parseComment(parsed)) return;
 
         lineCountInActiveMode++;
 
-        ShowCurrentLine(line);
+        showCurrentLine(line);
     }
 
-    public Boolean ParseBrackets(String line) {
+    public Boolean parseBrackets(String line) {
         return (!bracketCount && line.length() == 1);
     }
 
-    public Boolean ParseEmpty(String line) {
+    public Boolean parseEmpty(String line) {
         return !emptyCount && line.length() == 0;
     }
 
-    public Boolean ParseComment(String line) {
+    public Boolean parseComment(String line) {
         if (showComment) return false;
         if (line.startsWith("//")) {
             return true;
@@ -184,12 +184,12 @@ public class CodeReader {
         return isCommentActive;
     }
 
-    public void ShowCurrentLine(String line) {
+    public void showCurrentLine(String line) {
         if (showOutput)
             System.out.println("\t" + line);
     }
 
-    public void ShowLineCount() {
+    public void showLineCount() {
         System.out.println("In this Configuration there is " + lineCountInActiveMode + " lines");
     }
 }
