@@ -1,37 +1,38 @@
+
 import java.util.*;
-import java.util.stream.Collectors;
 
 /**
- * Created by Dom on 14.10.2015.
+ * Created by Alek on 14.10.2015.
  */
-public class Number
-{
-    private Integer _number;
+public class Number {
 
+    Set<String> numberList = new LinkedHashSet<String>();
 
-        public Number(String numberString)
-        {
-            _number = Integer.parseInt(numberString);
-        }
+    void chainNumbers(){
 
-        public static Number[] Parse(String input)
-        {
+        Input in = new Input();
+        in.inputNumbers();
+        String[] splitNumbers =  in.getChain().split(",");
+        Collections.addAll(numberList, splitNumbers);
 
-            List<String> numberTab = Arrays.asList(input.split(","));
-            Set<String> numberSet = new HashSet<String>();
-            numberSet.addAll(numberTab);
-            return numberSet.stream().map(n -> new Number(n));
+    }
+
+    void ordering(){
+
+        for(String number : numberList){
+            Long numberL = Long.parseLong(number);
+            List<Long> digits = new LinkedList<Long>();
+            while(numberL>0){
+                Long next = numberL%10;
+                numberL /= 10;
+                digits.add(next);
+            }
+            Collections.sort(digits, Collections.reverseOrder());
+            digits.size();
+            for (Long digit : digits) {
+                System.out.print(digit);
+            }
+            System.out.println(" ");
         }
-        public Number GetHighest()
-        {
-            String digit = _number.toString();
-            //Iterable numbers =
-            Collections.sort();
-            String higherNumber = string.Join("", numbers);
-            return new Number(higherNumber);
-        }
-        public String ToString()
-        {
-            return _number.toString();
-        }
+    }
 }
