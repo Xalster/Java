@@ -8,10 +8,10 @@ public class MyList {
         list.add("Melko");
         list.add(2,"lol");
         list.add(7);
-        //list.remove(3);
+        list.remove(6);
         list.set(2,"dsgx");
         System.out.println(list.size());
-        System.out.println(list.get(5));
+        System.out.println(list.get(4));
 
     }
 }

@@ -25,34 +25,40 @@ public class MyLinkedList {
     //add: dodaje element w podanym miejscu listy
     public void add(int index, Object data){
 
-        Node temp = new Node(data);
-        Node current = head;
-        for(int i = 1; i < index && current.getNext() != null; i++)
+        if(index>listCount)
         {
-            current = current.getNext();
+            System.out.println("Not in List");
+        }else {
+            Node temp = new Node(data);
+            Node current = head;
+            for (int i = 1; i < index && current.getNext() != null; i++) {
+                current = current.getNext();
+            }
+            temp.setNext(current.getNext());
+            current.setNext(temp);
+            listCount++;
         }
-        temp.setNext(current.getNext());
-        current.setNext(temp);
-        listCount++;
     }
     //get: zwraca wartosc z podanego miejsca Listy
     public Object get(int index){
 
-        if(index <= 0){
-            return null;
-        }
-        Node current = head.getNext();
-        for(int i = 1;i < index;i++){
-            if(current.getNext() == null){
-                return null;
+        if(index <= 0 || index > listCount){
+            return "Not in List";
+        }else {
+            Node current = head.getNext();
+            for (int i = 1; i < index; i++) {
+                if (current.getNext() == null) {
+                    return null;
+                }
+                current = current.getNext();
             }
-            current = current.getNext();
+            return current.getData();
         }
-        return current.getData();
     }
     //remove: usuwa wybrany element
     public boolean remove(int index){
         if(index < 1 || index > listCount){
+            System.out.println("Not in List");
             return false;
         }
         Node current = head;
@@ -71,11 +77,16 @@ public class MyLinkedList {
 
         Node temp = new Node(data);
         Node current = head;
-        for(int i = 1;i < index;i++){
-            current = current.getNext();
+        if(index <= 0 || index > listCount)
+        {
+            System.out.println("Not in List");
+        }else {
+            for (int i = 1; i < index; i++) {
+                current = current.getNext();
+            }
+            temp.setNext(current.getNext().getNext());
+            current.setNext(temp);
         }
-        temp.setNext(current.getNext().getNext());
-        current.setNext(temp);
     }
     //clear: czysci liste
     public void clear(){
