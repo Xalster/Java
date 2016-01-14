@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <children>
+      <AnchorPane layoutX="29.0" layoutY="55.0" prefHeight="600.0" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox layoutX="146.0" layoutY="241.0" prefHeight="600.0" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <HBox>
+                     <children>
+                        <AnchorPane prefHeight="175.0" prefWidth="200.0">
+                           <children>
+                              <Button fx:id="startButton" layoutX="69.0" layoutY="72.0" mnemonicParsing="false" onAction="#startButtonClicked" text="START" />
+                              <Button fx:id="resetButton" layoutX="71.0" layoutY="112.0" mnemonicParsing="false" onAction="#resetButtonCLicked" text="RESET" />
+                              <Label contentDisplay="CENTER" layoutX="25.0" layoutY="14.0" text="TESTOWNIK">
+                                 <font>
+                                    <Font size="28.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                        <VBox prefHeight="156.0" prefWidth="819.0">
+                           <children>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                 <children>
+                                    <Label fx:id="correctAnswerLabel" alignment="TOP_CENTER" layoutX="205.0" layoutY="35.0" prefHeight="58.0" prefWidth="200.0" text="-" textFill="#2fdd15">
+                                       <font>
+                                          <Font name="Lucida Handwriting Italic" size="36.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="previousQuestionsLabel" alignment="TOP_CENTER" layoutX="205.0" layoutY="3.0" prefHeight="32.0" prefWidth="200.0" text="-">
+                                       <font>
+                                          <Font name="Lucida Handwriting Italic" size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <Label alignment="BOTTOM_CENTER" layoutX="14.0" layoutY="64.0" prefHeight="9.0" prefWidth="200.0" text="dobre odpowiedzi">
+                                       <font>
+                                          <Font name="Arial" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label alignment="BOTTOM_CENTER" layoutX="14.0" layoutY="19.0" prefHeight="0.0" prefWidth="200.0" text="wszystkich pytań">
+                                       <font>
+                                          <Font name="Arial" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="wrongAnswerLabel" alignment="TOP_CENTER" layoutX="205.0" layoutY="89.0" prefHeight="23.0" prefWidth="200.0" text="-" textFill="#f53812">
+                                       <font>
+                                          <Font name="Lucida Handwriting Italic" size="36.0" />
+                                       </font>
+                                    </Label>
+                                    <Label alignment="BOTTOM_CENTER" layoutX="14.0" layoutY="110.0" prefHeight="16.0" prefWidth="200.0" text="złe odpowiedzi">
+                                       <font>
+                                          <Font name="Arial" size="14.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <AnchorPane prefHeight="100.0" prefWidth="1000.0">
+                     <children>
+                        <Button fx:id="nextButton" disable="true" layoutX="14.0" layoutY="35.0" mnemonicParsing="false" onAction="#nextButtonCLicked" prefHeight="31.0" prefWidth="161.0" text="następne pytanie" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="825.0" />
+                        <Label fx:id="questionBar" layoutX="206.0" layoutY="40.0" text="-" AnchorPane.leftAnchor="250.0" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="325.0" prefWidth="1000.0">
+                     <children>
+                        <VBox layoutX="130.0" layoutY="-1.0" prefHeight="325.0" prefWidth="870.0">
+                           <children>
+                              <Label fx:id="label1" text="-">
+                                 <VBox.margin>
+                                    <Insets bottom="25.0" top="25.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label fx:id="label2" text="-">
+                                 <VBox.margin>
+                                    <Insets bottom="25.0" top="25.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label fx:id="label3" text="-">
+                                 <VBox.margin>
+                                    <Insets bottom="25.0" top="25.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label fx:id="label4" text="-">
+                                 <VBox.margin>
+                                    <Insets bottom="25.0" top="25.0" />
+                                 </VBox.margin>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="325.0" prefWidth="130.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="870.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <Button fx:id="button1" disable="true" mnemonicParsing="false" onAction="#button1clicked" text="odp 1:">
+                                 <VBox.margin>
+                                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="button2" disable="true" mnemonicParsing="false" onAction="#button2clicked" text="odp 2:">
+                                 <VBox.margin>
+                                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="button3" disable="true" mnemonicParsing="false" onAction="#button3clicked" text="odp 3:">
+                                 <VBox.margin>
+                                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="button4" disable="true" mnemonicParsing="false" onAction="#button4clicked" text="odp 4:">
+                                 <VBox.margin>
+                                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                 </VBox.margin>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

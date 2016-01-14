@@ -1,0 +1,5 @@
+Czy podoba Ci siê mój program?_jest super_jest taki sobie_jest slaby_jest tragiczny
+przypkladowe pytanie_dobra odpowiedz_zla odpowiedz_inna zla odpowiedz_jeszcze inna zla odpowiedz
+pyt1_correct_1_2_3
+pyt2_correct_1_2_3
+pyt3_correct_1_2_3
